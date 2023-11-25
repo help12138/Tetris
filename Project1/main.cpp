@@ -1,0 +1,10 @@
+// Ö÷Ò³Ãæ
+#include<iostream>
+#include<string>
+#include<vector>
+
+using namespace std;
+
+int main() {
+	return 0;
+}
