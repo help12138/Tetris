@@ -1,5 +1,7 @@
 // 创建方框范围的类
 #include "Trtris.h"
+#include <time.h>
+#include <stdlib.h>
 
 Trtris::Trtris(int rows, int cols, int left, int top, int blockSize)
 {
@@ -10,6 +12,8 @@ void Trtris::init()
 {
 	// 初始化
 	delay = 30;
+	//  方块随机生成
+	srand(time(NULL));
 }
 
 void Trtris::play()

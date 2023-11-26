@@ -1,4 +1,12 @@
 #pragma once
+
+struct Point
+{
+	// 每个小方块的行列位置
+	int row;
+	int col;
+};
+
 class Block
 {
 public:
@@ -10,6 +18,7 @@ public:
 	~Block();
 
 private:
-
+	int blockType;
+	Point smallBlock[4];
 };
 
