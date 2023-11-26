@@ -1,4 +1,5 @@
 #pragma once
+#include <graphics.h>
 
 struct Point
 {
@@ -20,5 +21,9 @@ public:
 private:
 	int blockType;
 	Point smallBlock[4];
+	IMAGE *img;
+
+	static IMAGE* imgs[7];
+	static int size;
 };
 
