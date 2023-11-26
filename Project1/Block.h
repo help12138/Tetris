@@ -2,7 +2,7 @@
 class Block
 {
 public:
-	Block()= default;
+	Block();
 	void drop();
 	void moveLeftRight(int offset);
 	void retate();
@@ -13,15 +13,3 @@ private:
 
 };
 
-Block::Block()
-{
-}
-
-
-void Block::drop()
-{
-}
-
-Block::~Block()
-{
-}

@@ -21,3 +21,11 @@ void Block::draw(int leftMargin, int topMargin)
 	// ±ß¿ò
 }
 
+
+Block::Block()
+{
+}
+
+Block::~Block()
+{
+}
