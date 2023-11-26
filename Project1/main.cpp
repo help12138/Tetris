@@ -5,6 +5,11 @@
 
 using namespace std;
 
+#include "Trtris.h"
+
 int main() {
+	// Ö÷º¯Êý
+	Trtris game(20, 10, 163,133 ,36);
+	game.play();
 	return 0;
 }
