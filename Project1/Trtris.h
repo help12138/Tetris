@@ -1,6 +1,12 @@
 #pragma once
+#include<vector>
+#include <graphics.h>
+
+using namespace std;
 class Trtris
 {
+	
+
 public:
 	Trtris();
 	Trtris(int rows, int cols, int left, int top, int blockSize);
@@ -19,5 +25,14 @@ private:
 	//私有数据成员
 	int delay;
 	bool update; // 是否更新
+	// 地图数据
+	vector<vector<int>> map;
+	int rows;
+	int cols;
+	int leftMargin;
+	int topMargin;
+	int blockSize;
+	IMAGE imgBg;
+
 };
 

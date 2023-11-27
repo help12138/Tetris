@@ -1,10 +1,7 @@
 // Ö÷Ò³Ãæ
-#include<iostream>
-#include<string>
-#include<vector>
 
 using namespace std;
-
+#include<iostream>
 #include "Trtris.h"
 
 int main() {

@@ -6,6 +6,20 @@
 Trtris::Trtris(int rows, int cols, int left, int top, int blockSize)
 {
 	//构造函数 创建页面
+	this->rows = rows;
+	this->cols = cols;
+	this->leftMargin = left;
+	this->topMargin = top;
+	this->blockSize = blockSize;
+
+	for (int i = 0; i < rows; i++)
+	{
+		vector<int> mapRow;
+		for (int j = 0; i < cols; j++) {
+			mapRow.push_back(0);
+		}
+		map.push_back(mapRow);
+	}
 }
 
 void Trtris::init()
