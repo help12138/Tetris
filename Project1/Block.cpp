@@ -16,8 +16,8 @@ Block::Block()
 		{
 			imgs[i] = new IMAGE;
 			getimage(imgs[i], i*size, 0, size, size);
-			SetWorkingImage(); //恢复工作区
 		}
+		SetWorkingImage(); //恢复工作区
 	}
 	// 七种方块的排布
 	int block[7][4] = {

@@ -1,5 +1,6 @@
 #pragma once
 #include<vector>
+#include "Block.h"
 #include <graphics.h>
 
 using namespace std;
@@ -31,5 +32,7 @@ private:
 	int blockSize;
 	IMAGE imgBg;
 
+	Block* curBlock;
+	Block* nextBlock; // Ô¤¸æ·½¿é
 };
 

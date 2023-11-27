@@ -1,6 +1,5 @@
 // 创建方框范围的类
 #include "Trtris.h"
-#include "Block.h"
 #include<iostream>
 #include <time.h>
 #include <stdlib.h>
@@ -56,6 +55,10 @@ void Trtris::play()
 	// 开始游戏
 	init();
 
+	nextBlock = new Block;
+	curBlock = nextBlock;
+	nextBlock = new Block;
+
 	int timer = 0;  // 定时器
 	while (1)
 	{
@@ -89,8 +92,8 @@ void Trtris::keyEvent()
 void Trtris::updataWindow() {
 	putimage(0, 0, &imgBg); // 绘制背景图片
 
-	Block block;
-	block.draw(leftMargin, topMargin);
+	curBlock->draw(leftMargin, topMargin);
+	nextBlock->draw(689, 150);
 }
 
 int Trtris::getDelay()
