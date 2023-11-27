@@ -1,7 +1,13 @@
 // 创建方框范围的类
 #include "Trtris.h"
+#include "Block.h"
+#include<iostream>
 #include <time.h>
 #include <stdlib.h>
+
+
+const int SPEED_NORMAL = 500;
+const int SPEED_QUIK = 50;
 
 Trtris::Trtris(int rows, int cols, int left, int top, int blockSize)
 {
@@ -11,11 +17,11 @@ Trtris::Trtris(int rows, int cols, int left, int top, int blockSize)
 	this->leftMargin = left;
 	this->topMargin = top;
 	this->blockSize = blockSize;
-
 	for (int i = 0; i < rows; i++)
 	{
+		// mapRow 用来表示方块的种类
 		vector<int> mapRow;
-		for (int j = 0; i < cols; j++) {
+		for (int j = 0; j < cols; j++) {
 			mapRow.push_back(0);
 		}
 		map.push_back(mapRow);
@@ -25,13 +31,28 @@ Trtris::Trtris(int rows, int cols, int left, int top, int blockSize)
 void Trtris::init()
 {
 	// 初始化
-	delay = 30;
+	delay = SPEED_NORMAL;
 	//  方块随机生成
 	srand(time(NULL));
+	// 创建窗口
+	initgraph(938, 896);
+	// 加载背景图片
+	loadimage(&imgBg, "../bg2.png");
+
+	// 重新初始化游戏区中的数据
+	char data[20][10];
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++) {
+			map[i][j] = 0;
+		}
+	}
+
 }
 
 void Trtris::play()
 {
+	
 	// 开始游戏
 	init();
 
@@ -66,12 +87,26 @@ void Trtris::keyEvent()
 }
 
 void Trtris::updataWindow() {
+	putimage(0, 0, &imgBg); // 绘制背景图片
 
+	Block block;
+	block.draw(leftMargin, topMargin);
 }
 
 int Trtris::getDelay()
 {
-	return 0;
+	static unsigned long long lastTime = 0;
+	unsigned long long currentTime =  GetTickCount();
+
+	if (lastTime == 0) {
+		lastTime = currentTime;
+		return 0;
+	}
+	else {
+		int ret = currentTime - lastTime;
+		lastTime = currentTime;
+		return ret;
+	}
 }
 
 void Trtris::drop()
@@ -81,11 +116,6 @@ void Trtris::drop()
 void Trtris::clearLine()
 {
 }
-
-Trtris::Trtris()
-{
-}
-
 
 
 Trtris::~Trtris()

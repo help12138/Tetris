@@ -6,7 +6,9 @@ using namespace std;
 
 int main() {
 	// Ö÷º¯Êý
-	Trtris game(20, 10, 163,133 ,36);
+	
+	Trtris game(20, 10, 263, 133, 36);
 	game.play();
+	
 	return 0;
 }

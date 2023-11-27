@@ -9,7 +9,7 @@ Block::Block()
 {	
 	if (imgs[0] == NULL) {
 		IMAGE imgTmp;
-		loadimage(&imgTmp, "../block.png");
+		loadimage(&imgTmp, "../tiles.png");
 
 		SetWorkingImage(&imgTmp);
 		for (int i = 0; i < 7; i++)

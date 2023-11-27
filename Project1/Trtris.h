@@ -5,10 +5,7 @@
 using namespace std;
 class Trtris
 {
-	
-
 public:
-	Trtris();
 	Trtris(int rows, int cols, int left, int top, int blockSize);
 	void init(); // 初始化
 	void play(); // 游玩游戏
