@@ -92,6 +92,8 @@ void Trtris::keyEvent()
 void Trtris::updataWindow() {
 	putimage(0, 0, &imgBg); // »æÖÆ±³¾°Í¼Æ¬
 
+
+
 	curBlock->draw(leftMargin, topMargin);
 	nextBlock->draw(689, 150);
 }
