@@ -46,6 +46,9 @@ Block::Block()
 void Block::drop()
 {
 	// 下降
+	for (auto &block : smallBlock) {
+		block.row++;
+	}
 }
 
 void Block::moveLeftRight(int offset) {
@@ -73,6 +76,41 @@ IMAGE** Block::getImage()
 {
 
 	return imgs;
+}
+
+Block& Block::operator=(const Block& other)
+{
+	// 赋值构造函数
+	if (this == &other) return *this;
+
+	this->blockType = other.blockType;
+	for (int i = 0; i < 4; i++)
+	{
+		this->smallBlock[i] = other.smallBlock[i];
+	}
+	return *this;
+}
+
+bool Block::blockInMap(const vector<vector<int>>& map)
+{
+	// 判断方块是否超出边界
+	int rows = map.size();
+	int cols = map[0].size();
+	for (int i = 0; i < 4; i++)
+	{
+		if (smallBlock[i].col < 0 || smallBlock[i].col >= cols ||
+			smallBlock[i].row < 0 || smallBlock[i].row >= rows ||
+			map[smallBlock[i].row][smallBlock[i].col] != 0) {
+			return false;
+		}
+	}
+}
+
+void Block::solidify(vector<vector<int>>& map)
+{
+	for (int i = 0; i < 4; i++) {
+		map[smallBlock[i].row][smallBlock[i].col] = blockType;
+	}
 }
 
 Block::~Block()

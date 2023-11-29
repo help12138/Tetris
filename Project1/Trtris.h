@@ -34,5 +34,6 @@ private:
 
 	Block* curBlock;
 	Block* nextBlock; // 预告方块
+	Block bakBlock;  // 当前方块降落时用来备份的上一个合法位置
 };
 

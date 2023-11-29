@@ -102,7 +102,7 @@ void Trtris::updataWindow() {
 
 			int x = j * blockSize + leftMargin;
 			int y = i * blockSize + topMargin;
-			putimage(x, y, imgs[map[i][j]]-1);
+			putimage(x, y, imgs[map[i][j]-1]);
 		}
 	}
 
@@ -129,6 +129,16 @@ int Trtris::getDelay()
 
 void Trtris::drop()
 {
+	bakBlock = *curBlock;  // 通过赋值构造函数将对象赋值给变量
+	curBlock->drop();
+
+	if (!curBlock->blockInMap(map)) {
+		// 固化方块
+		bakBlock.solidify(map);
+		delete curBlock;
+		curBlock = nextBlock;
+		nextBlock = new Block;
+	}
 }
 
 void Trtris::clearLine()

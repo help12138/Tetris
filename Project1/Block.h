@@ -1,5 +1,8 @@
 #pragma once
 #include <graphics.h>
+#include<vector>
+
+using namespace std;
 
 struct Point
 {
@@ -17,6 +20,13 @@ public:
 	void retate();
 	void draw(int leftMargin, int topMargin);
 	static IMAGE** getImage();
+
+	Block& operator= (const Block& other);
+	
+	bool blockInMap(const vector<vector<int>>&map);
+
+	void solidify(vector<vector<int>>& map);
+
 	~Block();
 
 private:
