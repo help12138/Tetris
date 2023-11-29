@@ -16,6 +16,7 @@ public:
 	void moveLeftRight(int offset);
 	void retate();
 	void draw(int leftMargin, int topMargin);
+	static IMAGE** getImage();
 	~Block();
 
 private:

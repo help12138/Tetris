@@ -92,10 +92,23 @@ void Trtris::keyEvent()
 void Trtris::updataWindow() {
 	putimage(0, 0, &imgBg); // 绘制背景图片
 
+	IMAGE** imgs = Block::getImage();
 
+	BeginBatchDraw();
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++) {
+			if (map[i][j] == 0) continue;
 
-	curBlock->draw(leftMargin, topMargin);
-	nextBlock->draw(689, 150);
+			int x = j * blockSize + leftMargin;
+			int y = i * blockSize + topMargin;
+			putimage(x, y, imgs[map[i][j]]-1);
+		}
+	}
+
+	curBlock->draw(leftMargin, topMargin);  // 当前方块渲染
+	nextBlock->draw(689, 150);  // 预告方块位置
+	EndBatchDraw();
 }
 
 int Trtris::getDelay()
