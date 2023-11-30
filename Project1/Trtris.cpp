@@ -2,6 +2,7 @@
 #include "Trtris.h"
 #include<iostream>
 #include <time.h>
+#include<conio.h>
 #include <stdlib.h>
 
 
@@ -86,7 +87,41 @@ void Trtris::play()
 
 void Trtris::keyEvent()
 {
+	// 键盘操作
+	unsigned char ch;
+	bool rotateFalse = false;
+	int dx = 0;
+	if (_kbhit()) {
+		ch = _getch();
+		if (ch == 224) {
+			ch = _getch();
+			switch (ch)
+			{
+			case 72:
+				rotateFalse = true;
+				break;
+			case 80:
+				delay = SPEED_QUIK;
+				break;
+			case 75:
+				dx = -1;
+				break;
+			case 77:
+				dx = 1;
+				break;
+			default:
+				break;
+			}
+		}
+	}
 
+	if (rotateFalse) {
+		// to do
+	}
+	if (dx != 0) {
+		moveLeftRight(dx);
+		update = true;
+	}
 }
 
 void Trtris::updataWindow() {
@@ -139,10 +174,22 @@ void Trtris::drop()
 		curBlock = nextBlock;
 		nextBlock = new Block;
 	}
+
+	delay = SPEED_NORMAL;
 }
 
 void Trtris::clearLine()
 {
+}
+
+void Trtris::moveLeftRight(int offset)
+{
+	bakBlock = *curBlock;
+	curBlock->moveLeftRight(offset);
+	// 防止左右移动超过边界以及位置是否合法
+	if (!curBlock->blockInMap(map)) {
+		*curBlock = bakBlock;
+	}
 }
 
 

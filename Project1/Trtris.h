@@ -19,6 +19,7 @@ private:
 	int getDelay(); // 与上次的函数调用的毫秒间隔
 	void drop();
 	void clearLine();
+	void moveLeftRight(int offset);
 private:
 	//私有数据成员
 	int delay;

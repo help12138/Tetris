@@ -53,7 +53,9 @@ void Block::drop()
 
 void Block::moveLeftRight(int offset) {
 	// ◊Û“∆∫Õ”““∆
-
+	for (int i = 0; i < 4; i++) {
+		smallBlock[i].col += offset;
+	}
 }
 
 void Block::retate()
