@@ -21,6 +21,7 @@ private:
 	void clearLine();
 	void moveLeftRight(int offset);
 	void rotate();
+	void checkOver();
 
 private:
 	//私有数据成员
@@ -34,6 +35,7 @@ private:
 	int topMargin;
 	int blockSize;
 	IMAGE imgBg;
+	bool gameOver;
 
 	Block* curBlock;
 	Block* nextBlock; // 预告方块

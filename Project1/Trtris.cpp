@@ -47,7 +47,7 @@ void Trtris::init()
 			map[i][j] = 0;
 		}
 	}
-
+	gameOver = false;
 }
 
 void Trtris::play()
@@ -81,6 +81,10 @@ void Trtris::play()
 
 			// 更改游戏数据
 			clearLine();
+		}
+
+		if (gameOver) {
+			init(); // 重新开局
 		}
 	}
 }
@@ -175,6 +179,9 @@ void Trtris::drop()
 		delete curBlock;
 		curBlock = nextBlock;
 		nextBlock = new Block;
+
+		// 检查游戏是否结束
+		checkOver();
 	}
 
 	delay = SPEED_NORMAL;
@@ -182,6 +189,27 @@ void Trtris::drop()
 
 void Trtris::clearLine()
 {
+	int lines = 0;
+	int k = rows - 1;  // 存储数据的行数
+	for (int i = rows - 1; i >= 0; i--) {
+		int count = 0;
+		for (int j = 0; j < cols; j++) {
+			if (map[i][j]) {
+				count++;
+			}
+			map[k][j] = map[i][j];
+		}
+		if (count < cols) {
+			// 如果行内没有排满
+			k--;
+		}
+		else {
+			lines++;
+		}
+	}
+	if (lines > 0) {
+		update = true;
+	}
 }
 
 void Trtris::moveLeftRight(int offset)
@@ -202,6 +230,11 @@ void Trtris::rotate()
 	if (!curBlock->blockInMap(map)) {
 		*curBlock = bakBlock;
 	}
+}
+
+void Trtris::checkOver()
+{
+	gameOver = (curBlock->blockInMap(map) == false);
 }
 
 
