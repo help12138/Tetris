@@ -26,6 +26,8 @@ public:
 	bool blockInMap(const vector<vector<int>>&map);
 
 	void solidify(vector<vector<int>>& map);
+	void rotate();
+	int getBlockType();
 
 	~Block();
 

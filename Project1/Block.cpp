@@ -115,6 +115,21 @@ void Block::solidify(vector<vector<int>>& map)
 	}
 }
 
+void Block::rotate()
+{
+	Point p = smallBlock[1];
+	for (int i = 0; i < 4; i++) {
+		Point tmp = smallBlock[i];
+		smallBlock[i].col = p.col - tmp.row + p.row;
+		smallBlock[i].row = p.row + tmp.col - p.col;
+	}
+}
+
+int Block::getBlockType()
+{
+	return blockType;
+}
+
 Block::~Block()
 {
 }

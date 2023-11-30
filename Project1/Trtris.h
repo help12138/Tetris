@@ -20,6 +20,8 @@ private:
 	void drop();
 	void clearLine();
 	void moveLeftRight(int offset);
+	void rotate();
+
 private:
 	//私有数据成员
 	int delay;

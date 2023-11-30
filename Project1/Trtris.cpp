@@ -117,6 +117,8 @@ void Trtris::keyEvent()
 
 	if (rotateFalse) {
 		// to do
+		rotate();
+		update = true;
 	}
 	if (dx != 0) {
 		moveLeftRight(dx);
@@ -187,6 +189,16 @@ void Trtris::moveLeftRight(int offset)
 	bakBlock = *curBlock;
 	curBlock->moveLeftRight(offset);
 	// 防止左右移动超过边界以及位置是否合法
+	if (!curBlock->blockInMap(map)) {
+		*curBlock = bakBlock;
+	}
+}
+
+void Trtris::rotate()
+{
+	if (curBlock->getBlockType() == 7) return;  // 方块类旋转
+	bakBlock = *curBlock;
+	curBlock->rotate();
 	if (!curBlock->blockInMap(map)) {
 		*curBlock = bakBlock;
 	}
